@@ -1,0 +1,11 @@
+<div id="content">
+  <app-info-song [song]="actualSong"></app-info-song>
+  <br>
+  <audio 
+    *ngIf="actualSong?.song" 
+    [src]="actualSong.song" 
+    controls 
+    autoplay>
+  </audio>
+  <app-media-control (requestSong)="changeSong($event)"></app-media-control>
+</div>
