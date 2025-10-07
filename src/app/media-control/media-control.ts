@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, OnInit, output } from '@angular/core';
 
 @Component({
   selector: 'app-media-control',
@@ -6,11 +6,19 @@ import { Component, output } from '@angular/core';
   templateUrl: './media-control.html',
   styleUrl: './media-control.css'
 })
-export class MediaControl {
+export class MediaControl implements OnInit{
 
   song: any;
   isPlaying:boolean = false;
   requestSong = output<boolean>();
+
+  constructor(){
+    
+  }
+
+  ngOnInit(): void {
+      console.log("")
+  }
 
   nextSong(){
     this.requestSong.emit(true);
