@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MUSIC": {
+    "EXAMPLE_APP": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -63,10 +63,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MUSIC:build:production"
+              "buildTarget": "EXAMPLE_APP:build:production"
             },
             "development": {
-              "buildTarget": "MUSIC:build:development"
+              "buildTarget": "EXAMPLE_APP:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -93,6 +93,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "b43b8ced-5275-491a-9e87-cb1376d0d718"
   }
 }

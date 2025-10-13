@@ -3,14 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { InfoSong } from './info-song/info-song';
-import { MediaControl } from './media-control/media-control';
+import { SongInfo } from './song-info/song-info';
+import { AudioController } from './audio-controller/audio-controller';
+import { Playlist } from './playlist/playlist';
+import { Player } from './player/player';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     App,
-    InfoSong,
-    MediaControl
+    SongInfo,
+    AudioController,
+    Playlist,
+    Player
   ],
   imports: [
     BrowserModule,
@@ -18,7 +23,8 @@ import { MediaControl } from './media-control/media-control';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection()
+    provideZonelessChangeDetection(),
+    provideHttpClient()
   ],
   bootstrap: [App]
 })
