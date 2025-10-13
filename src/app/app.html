@@ -2,10 +2,10 @@
   <app-info-song [song]="actualSong"></app-info-song>
   <br>
   <audio 
-    *ngIf="actualSong?.song" 
-    [src]="actualSong.song" 
+    *ngIf="actualSong?.url_media" 
+    [src]="actualSong.url_media" 
     controls 
-    autoplay>ñ
+    autoplay>
   </audio>
   <app-media-control (requestSong)="changeSong($event)"></app-media-control>
 </div>

@@ -54,7 +54,7 @@ actualSong: Song;
       this.actualSong = this.getLastSongFromPlaylist();
     }
   if(this.actualSong != undefined){
-    alert("No se ha podido cargar la canción.")
+    console.log("No se ha podido cargar la canción.")
   }
  }
 
