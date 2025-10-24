@@ -3,6 +3,7 @@ export interface SpotifyTrackResponse {
     name: string,
     duration_ms: number,
     href: string
+    preview_url?: string,
     artists:[
         {
             id: string,

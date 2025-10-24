@@ -1,0 +1,34 @@
+<div class="search-wrapper">
+  <input type="text" class="search-input" placeholder="Buscar canciones, artistas o álbumes" (input)="onInput($event)"/>
+
+  @if (open && results) {
+    <div class="results">
+      <div class="section" *ngIf="results.tracks?.length">
+        <h4>Canciones</h4>
+        <ul>
+          @for (t of results.tracks; track t.id) {
+            <li><button (click)="playTrack(t.id)">{{ t.name }} — {{ t.artists.at(0)?.name }}</button></li>
+          }
+        </ul>
+      </div>
+
+      <div class="section" *ngIf="results.albums?.length">
+        <h4>Álbumes</h4>
+        <ul>
+          @for (a of results.albums; track a.id) {
+            <li><button (click)="loadAlbum(a.id)">{{ a.name }}</button></li>
+          }
+        </ul>
+      </div>
+
+      <div class="section" *ngIf="results.artists?.length">
+        <h4>Artistas</h4>
+        <ul>
+          @for (a of results.artists; track a.id) {
+            <li>{{ a.name }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+</div>

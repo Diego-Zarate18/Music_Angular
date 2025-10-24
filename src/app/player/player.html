@@ -1,7 +1,7 @@
-@if (album$ | async; as album) {
-    <div id="main">
-        <app-song-info [song]="album?.tracks?.pop()" [cover]="album?.images?.at(0)" displayMode="main"></app-song-info>
-        <app-playlist [playlist]="album?.tracks" [cover]="album?.images?.at(0)"></app-playlist>
+<div id="main">
+        <div class="left">
+            <app-song-info [song]="($any(currentTrack$ | async))" [cover]="($any(cover$ | async))" displayMode="main"></app-song-info>
+        <app-audio-controller></app-audio-controller>
     </div>
-    <!-- <app-audio-controller></app-audio-controller> -->
-}
+        <app-playlist [playlist]="($any(queue$ | async))" [cover]="($any(cover$ | async))"></app-playlist>
+</div>

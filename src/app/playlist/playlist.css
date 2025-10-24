@@ -1,16 +1,38 @@
 :host{
-    height: 100%;
     width: 100%;
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 12px 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    max-height: clamp(420px, 70vh, 620px);
+    overflow: hidden;
 }
 
 h1{
     width: 100%;
     text-align: center;
     height: 40px;
-    border: 1px solid   black;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
 .content{
-    height: 90%;
+    flex: 1 1 auto;
     overflow: auto;
+    padding: 4px 6px;
 }
+
+.queue-item{
+    width: 100%;
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.queue-item:hover{ background: rgba(255,255,255,0.06); }

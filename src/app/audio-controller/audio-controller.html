@@ -1,13 +1,9 @@
-<audio controls hidden></audio>
-<input type="range" id="control-bar">
+<audio #audioEl hidden></audio>
+<input type="range" #rangeRef id="control-bar" min="0" max="100" value="0" (input)="onSeek($event)">
 <div class="player-buttons">
-    <span class="back">
-        <i class="fa-solid fa-backward-step"></i>
-    </span>
-    <span class="play">
-        <i class="fa-solid fa-play"></i>
-    </span>
-    <span class="next">
-        <i class="fa-solid fa-forward-step"></i>
-    </span>
+  <button class="icon" (click)="prev()" aria-label="previous"><i class="fa-solid fa-backward-step"></i></button>
+  <button class="icon primary" (click)="toggle()" aria-label="play-pause">
+    <i class="fa-solid" [ngClass]="isPlaying ? 'fa-pause' : 'fa-play'"></i>
+  </button>
+  <button class="icon" (click)="next()" aria-label="next"><i class="fa-solid fa-forward-step"></i></button>
 </div>
