@@ -9,8 +9,8 @@
 }
 
 #control-bar{
-    width: min(760px, 80%);
-    accent-color: var(--accent);
+  width: min(640px, 76%);
+  accent-color: var(--accent);
 }
 
 #control-bar{

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
-import { SpotifySearchService, SearchResult } from '../services/spotify-api/spotify-search-service';
+import { SpotifySearchService, SearchResult, SearchAlbumItem, SearchArtistItem, SearchTrackItem } from '../services/spotify-api/spotify-search-service';
 import { PlayerStateService } from '../services/player/player-state.service';
 import { SpotifyAlbumService } from '../services/spotify-api/spotify-album-service';
 
@@ -48,7 +48,14 @@ export class SearchBar implements OnInit, OnDestroy {
   playTrack(id: string) {
     const track = this.results?.tracks.find(t => t.id === id);
     if (track) {
-      this.playerState.play(track);
+      this.playerState.play({
+        id: track.id,
+        name: track.name,
+        duration_ms: track.duration_ms ?? 0,
+        href: '',
+        preview_url: track.preview_url,
+        artists: [{ id: '', name: track.artist }]
+      });
       this.open = false;
     }
   }

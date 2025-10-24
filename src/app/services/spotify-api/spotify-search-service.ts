@@ -6,12 +6,13 @@ import { Track } from '../../interfaces/track';
 import { Image } from '../../interfaces/image';
 
 export interface SimpleImage { url: string; }
-export interface SimpleArtist { id: string; name: string; }
-export interface SimpleAlbum { id: string; name: string; images?: SimpleImage[]; artists?: SimpleArtist[]; }
+export interface SearchTrackItem { id: string; name: string; artist: string; image?: string; duration_ms?: number; preview_url?: string; }
+export interface SearchArtistItem { id: string; name: string; image?: string; }
+export interface SearchAlbumItem { id: string; name: string; image?: string; artist?: string; }
 export interface SearchResult {
-  tracks: Track[];
-  artists: SimpleArtist[];
-  albums: SimpleAlbum[];
+  tracks: SearchTrackItem[];
+  artists: SearchArtistItem[];
+  albums: SearchAlbumItem[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -28,24 +29,24 @@ export class SpotifySearchService {
 
     return this.http.get<any>(url, { params }).pipe(
       map(res => {
-        const tracks: Track[] = (res.tracks?.items ?? []).map((t: any) => ({
+        const tracks: SearchTrackItem[] = (res.tracks?.items ?? []).map((t: any) => ({
           id: t.id,
           name: t.name,
+          artist: (t.artists?.[0]?.name ?? ''),
+          image: t.album?.images?.[0]?.url,
           duration_ms: t.duration_ms,
-          href: t.href,
           preview_url: t.preview_url,
-          artists: (t.artists ?? []).map((a: any) => ({ id: a.id, name: a.name }))
         }));
-        const artists: SimpleArtist[] = (res.artists?.items ?? []).map((a: any) => ({
+        const artists: SearchArtistItem[] = (res.artists?.items ?? []).map((a: any) => ({
           id: a.id,
           name: a.name,
-          images: a.images
+          image: a.images?.[0]?.url
         }));
-        const albums: SimpleAlbum[] = (res.albums?.items ?? []).map((a: any) => ({
+        const albums: SearchAlbumItem[] = (res.albums?.items ?? []).map((a: any) => ({
           id: a.id,
           name: a.name,
-          images: a.images,
-          artists: (a.artists ?? []).map((ar: any) => ({ id: ar.id, name: ar.name }))
+          image: a.images?.[0]?.url,
+          artist: a.artists?.[0]?.name
         }));
         return { tracks, artists, albums } as SearchResult;
       })

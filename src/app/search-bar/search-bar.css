@@ -2,14 +2,17 @@
   position: sticky;
   top: 0;
   width: 100%;
-  padding: 16px 24px;
+  padding: 16px 0px;
+  background: #1F1F1F;
   z-index: 10;
   display: flex;
   justify-content: center;
 }
 
+.search-box{ width: min(680px, 92vw); position: relative; }
+
 .search-input{
-  width: min(640px, 92vw);
+  width: 100%;
   height: 40px;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -18,7 +21,6 @@
   color: #fff;
   background: #2b2b2b;
 }
-
 .search-input:focus{
   outline: none;
   border-color: var(--accent);
@@ -27,21 +29,46 @@
 
 .results{
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(640px, calc(100vw - 48px));
-  margin-top: 8px;
+  top: 48px; 
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: min(60vh, 520px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: #2b2b2b;
   color: #fff;
   border-radius: 8px;
   padding: 12px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+  z-index: 20;
 }
+
+.row{
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: inherit;
+  text-align: left;
+  padding: 6px 4px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.row:hover{ background: rgba(255,255,255,0.06); }
+
+.thumb{ width: 44px; height: 44px; object-fit: cover; }
+.thumb.square{ border-radius: 6px; }
+.thumb.circle{ border-radius: 50%; }
+.title{ font-weight: 600; }
+.subtitle{ color: var(--muted); font-size: 0.85rem; margin-left: 8px; }
 
 @media (max-width: 768px){
   .search-wrapper{ padding: 12px; }
-  .search-input{ width: min(520px, 92vw); }
-  .results{ width: min(520px, calc(100vw - 24px)); }
+  .search-box{ width: min(560px, 92vw); }
 }
 
 .section{ margin-bottom: 8px; }

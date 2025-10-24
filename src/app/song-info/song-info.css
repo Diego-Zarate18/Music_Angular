@@ -13,10 +13,10 @@
 }
 
 :host(.card) .card-song-img{
-    width: clamp(56px, 9vw, 75px);
-    height: clamp(56px, 9vw, 75px);
-    border-radius: 20%;
-    margin-right: 10px;
+    width: clamp(44px, 7vw, 56px);
+    height: clamp(44px, 7vw, 56px);
+    border-radius: 14%;
+    margin-right: 8px;
 }
 
 :host(.card) .card-song-details{
@@ -28,14 +28,15 @@
 }
 
 :host(.card) .card-song-details .card-song-title{
-    font-weight: 300;
-    font-size: 1.5em;
-    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 1.05em;
+    margin-bottom: 2px;
 }
 
 :host(.card) .card-song-details .card-song-artist{
-    font-weight: 200;
-    font-size: 1.2em;
+    font-weight: 400;
+    font-size: 0.9em;
+    color: var(--muted);
 }
 
 
@@ -49,15 +50,15 @@
 }
 
 :host(.main) .card-song-img{
-    width: clamp(220px, 28vw, 320px);
-    height: clamp(220px, 28vw, 320px);
+    width: clamp(170px, 22vw, 260px);
+    height: clamp(170px, 22vw, 260px);
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 }
 
 :host(.main) .card-song-details{
-    width: min(520px, 90%);
+    width: min(460px, 90%);
     text-align: center;
     align-content: baseline;
     overflow: hidden;
@@ -65,13 +66,13 @@
 
 :host(.main) .card-song-details .card-song-title{
     font-weight: 700;
-    font-size: clamp(28px, 6vw, 56px);
+    font-size: clamp(22px, 4.5vw, 40px);
 }
 
 :host(.main) .card-song-details .card-song-artist{
     font-weight: 400;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(12px, 1.6vw, 16px);
     color: var(--muted);
-    margin-top: 6px;
+    margin-top: 4px;
 }
 

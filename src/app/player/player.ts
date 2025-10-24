@@ -29,7 +29,9 @@ export class Player implements OnInit{
 
   ngOnInit(): void {
     this._search.search('Circles Mac Miller').subscribe(res => {
-      const album = (res.albums ?? []).find(a => a.name?.toLowerCase() === 'circles' && (a.artists ?? []).some(ar => ar.name?.toLowerCase() === 'mac miller'));
+      const album = (res.albums ?? []).find(a =>
+        a.name?.toLowerCase() === 'circles' && (a.artist ?? '').toLowerCase().includes('mac miller')
+      );
       const id = album?.id;
       if (id) {
         this._spotifyAlbum.getAlbum(id).subscribe(a => {
